@@ -1,0 +1,44 @@
+<!--
+<mat-tab-group>
+    <mat-tab label="New Department">
+        <app-department-form></app-department-form>
+    </mat-tab>
+    <mat-tab label="New Product">
+        <app-product-form></app-product-form>
+    </mat-tab>
+    <mat-tab label="Products">
+        <app-products-table></app-products-table>
+    </mat-tab>
+</mat-tab-group>
+<app-basic></app-basic>
+<app-cold-observables></app-cold-observables>
+<app-hot-observables-subjects></app-hot-observables-subjects>
+<app-subjects></app-subjects>
+-->
+
+
+<div fxLayout="row" fxLayoutAlign="space-around center" fxFill>
+
+    <div fxFlex="20">
+
+        <mat-radio-group [(ngModel)]="option" fxLayout="column" fxLayoutAlign="center start">
+            <mat-radio-button value="basic-creation">Basic Creation </mat-radio-button>
+            <mat-radio-button value="operators">Operators</mat-radio-button>
+            <mat-radio-button value="async">Templates async</mat-radio-button>
+            <mat-radio-button value="error">Error Handling</mat-radio-button>
+            <mat-radio-button value="draganddrop">Drag and Drop</mat-radio-button>
+
+        </mat-radio-group>
+
+    </div>
+    <div fxFlex="70" fxLayout="column" fxLayoutAlign="center start">
+        <ng-container [ngSwitch]="option">
+            <app-basic-creation *ngSwitchCase="'basic-creation'" fxFill></app-basic-creation>
+            <app-operators *ngSwitchCase="'operators'" fxFill></app-operators>
+            <app-async *ngSwitchCase="'async'" fxFill></app-async>
+            <app-error-handler *ngSwitchCase="'error'" fxFill></app-error-handler>
+            <app-drag-and-drop *ngSwitchCase="'draganddrop'" fxFill></app-drag-and-drop>
+        </ng-container>
+    </div>
+
+</div>

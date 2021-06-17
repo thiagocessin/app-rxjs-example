@@ -1,0 +1,9 @@
+.debounce-area{
+
+    position: fixed;
+    left:50%;
+    right: 50%;
+    width: 100px;
+    height: 100px;
+}
+
