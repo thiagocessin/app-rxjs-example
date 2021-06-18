@@ -21,6 +21,7 @@ import { OperatorsComponent } from './rxjs/operators/operators.component';
 import { AsyncComponent } from './rxjs/async/async.component';
 import { ErrorHandlerComponent } from './rxjs/error-handler/error-handler.component';
 import { DragAndDropComponent } from './rxjs/drag-and-drop/drag-and-drop.component';
+import { UnsubscribleComponent } from './rxjs/unsubscrible/unsubscrible.component';
 
 
 
@@ -40,7 +41,8 @@ import { DragAndDropComponent } from './rxjs/drag-and-drop/drag-and-drop.compone
     OperatorsComponent,
     AsyncComponent,
     ErrorHandlerComponent,
-    DragAndDropComponent
+    DragAndDropComponent,
+    UnsubscribleComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,29 @@
+<div fxFill fxLayout="column" fxLayoutAlign="center start">
+  <div fxFill fxLayout="column" fxLayoutAlign="space-around start">
+    <button mat-button color="warn" (click)="subscrible()">Subscrible All</button>
+
+    <mat-spinner diameter="20" color="warn" *ngIf="subscriptionsActive"></mat-spinner>
+
+  </div>
+
+
+  <div fxFill fxLayout="column" fxLayoutAlign="space-around start">
+    <button mat-button color="primary"
+      [disabled]="!subscriptionsActive" 
+      (click)="unsubscrible()">UnSubscrible All</button>
+
+
+  </div>
+
+
+  <!--
+  <button mat-button color="primary" (click)="filterClick()">filter</button>
+  <button mat-button color="primary" (click)="tapClick()">tap</button>
+  <button mat-button color="primary" (click)="takeClick()">take</button>
+  <button mat-button color="primary" (click)="debounceTimeClick()">debounceTime</button>
+  <button mat-button color="primary" (click)="debounceTimeSearch()">debounceTime search</button>
+  <button mat-button color="primary" (click)="takeWhileClick()">takeWhile</button>
+  <button mat-button color="primary" (click)="takeUntilSearch()">takeUntil search</button>
+-->
+
+</div>
