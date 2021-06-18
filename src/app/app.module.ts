@@ -22,6 +22,8 @@ import { AsyncComponent } from './rxjs/async/async.component';
 import { ErrorHandlerComponent } from './rxjs/error-handler/error-handler.component';
 import { DragAndDropComponent } from './rxjs/drag-and-drop/drag-and-drop.component';
 import { UnsubscribleComponent } from './rxjs/unsubscrible/unsubscrible.component';
+import { SwitchMergeComponent } from './rxjs/switch-merge/switch-merge.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -42,14 +44,16 @@ import { UnsubscribleComponent } from './rxjs/unsubscrible/unsubscrible.componen
     AsyncComponent,
     ErrorHandlerComponent,
     DragAndDropComponent,
-    UnsubscribleComponent
+    UnsubscribleComponent,
+    SwitchMergeComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule
   
   ],
   providers: [],

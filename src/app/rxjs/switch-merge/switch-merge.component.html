@@ -1,0 +1,26 @@
+<div fxFill fxLayout="column" fxLayoutAlign="start stretch">
+
+  <div>
+    <mat-form-field fxFlex="100" style="margin:20px">
+      <mat-label> Search by:</mat-label>
+        <input #searchBy 
+          matInput 
+          placeholder="Type something"
+          autocomplete="off"
+          [(ngModel)]="searchInput">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-list>
+      <mat-list-item *ngFor="let p of people$ | async">
+
+        <h3 matLine>{{p.firstName}},{{p.lastName}}</h3>
+        <p matline>{{p.email}}</p>
+        <p matline>{{p.city}}</p>
+        <p matline>{{p.country}}</p>
+
+      </mat-list-item>
+    </mat-list>
+
+  </div>
+</div>
