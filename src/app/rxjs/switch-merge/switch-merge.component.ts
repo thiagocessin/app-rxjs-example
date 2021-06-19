@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { fromEvent, Observable, of } from 'rxjs';
-import { filter, map, mergeAll } from 'rxjs/operators';
+import { debounceTime, filter, map, mergeAll, mergeMap, switchAll, switchMap } from 'rxjs/operators';
 import { Person } from './person.model';
 
 @Component({
@@ -20,7 +20,8 @@ export class SwitchMergeComponent implements OnInit {
 
   ngOnInit() {
    // this.firstOption();
-  this.secondOption();
+  //this.secondOption();
+  this.thirdOption();
   }
 
   filterPeople(searchInput:string): Observable<Person[]>{
@@ -28,16 +29,32 @@ export class SwitchMergeComponent implements OnInit {
     return this.http.get<Person[]>(`${this.url}/${this.searchInput}`);
   }
 
+  thirdOption(){
+
+    let keyUp$ = fromEvent(this.inputSearchRef.nativeElement,'keyup');
+    /*
+    this.people$ = keyUp$
+      .pipe(map((e)=>this.filterPeople(this.searchInput)))
+      .pipe(switchAll());//conecta a todos os subscrible, mas troca as antigas pelas novas, sempre vale a ultima reqwuisição
+  */
+
+      this.people$ = keyUp$
+        .pipe(
+          debounceTime(700),
+          switchMap(()=>this.filterPeople(this.searchInput)));
+
+  }
   secondOption(){
     let keyUp$ = fromEvent(this.inputSearchRef.nativeElement,'keyup');
-    let fetch$ = keyUp$.pipe(map((e)=>this.filterPeople(this.searchInput)));
+   // let fetch$ = keyUp$.pipe(map((e)=>this.filterPeople(this.searchInput)));
 
     //fetch$
     //.pipe(mergeAll())//vai chamar o subscribe interno de filterPeople automaticamente
    //.subscribe((data)=>console.log(data));
 
-    this.people$  = fetch$.pipe(mergeAll());
-
+    //this.people$  = fetch$.pipe(mergeAll());
+    
+    this.people$ = keyUp$.pipe(mergeMap((e)=>this.filterPeople(this.searchInput)));
   }
 
   firstOption(){
@@ -46,6 +63,8 @@ export class SwitchMergeComponent implements OnInit {
         this.filterPeople(this.searchInput);
     });
   }
+
+  
 
 
 
